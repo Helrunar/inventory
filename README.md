@@ -1,14 +1,8 @@
 <p align="center"><img src="https://symfony.com/images/logos/header-logo.svg"></p>
 
-# **Symfony 5 backoffice with Gentella Free Bootstrap 4 Admin Dashboard Template**
+# **Symfony 5 IMS with Gentella Free Bootstrap 4 Admin Dashboard Template**
 
-Gentelella A skeleton application with user account functionality on the foundation of the Symfony 5 framework, Twitter Bootstrap and Gentelella template .
-
-## Theme Demo
-![Gentelella Bootstrap Admin Template](https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg
-"Gentelella Theme Browser Preview")
-**[Template Demo](https://colorlib.com/polygon/gentelella/index.html)**
-
+Inventory Management System on the foundation of the Symfony 5 framework, Twitter Bootstrap and Gentelella template .
 
 # **Features**
 - Administration Dashboard with Gentelella Admin Theme
@@ -17,7 +11,6 @@ Gentelella A skeleton application with user account functionality on the foundat
 - USER/ROLES CRUD with ajax and symfony form system 
 - Password reset and send email, with link to reset the password
 - Authentication system
-- Powerful blog management module (CRUD, Change histrory, file upload access control for Writers and Editors )
 - Translation functionality (Easy to set up whatever language you need/use)
 
 # **Requirements**
@@ -28,6 +21,8 @@ Gentelella A skeleton application with user account functionality on the foundat
 # **Credits**
 [Gentelella](https://github.com/ColorlibHQ/gentelella) - Admin template project is developed and maintained by [Colorlib](https://colorlib.com/ "Colorlib - Make Your First Blog") and Aigars Silkalns
 Mamour Wane (Mamless) co-founder of [ONETECHSN](https://onetechsn.com)
+
+IMS is originally based on [Gentelella Admin Symfony](https://github.com/mamless/Gentella-admin-Symfony-5) by [mamless](https://github.com/mamless)
 
 ## License information
 Gentelella is licensed under The MIT License (MIT). Which means that you can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software. But you always need to state that Colorlib is the original author of this template.
