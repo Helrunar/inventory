@@ -17,8 +17,6 @@ backend:
     user: User
     manage: Manage
     categories: Categories
-    blog: Blog
-    history: History
   role:
     choice_role: Choose a role
   user:
