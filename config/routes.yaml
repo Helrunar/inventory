@@ -6,3 +6,10 @@ controllers:
         _locale: '%app_locales%'
     defaults:
         _locale: '%locale%'
+# redirecting the homepage
+homepage:
+    path: /
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /admin
+        permanent: true
