@@ -12,6 +12,7 @@ backend:
     please_confirm: Bitte Aktion bestätigen
     choice_action: Aktion auswählen
     no_item_selected: Nichts ausgewählt
+    new: Neu
   group:
     group_actions: Gruppenaktion
     deactivate: Deaktivieren
@@ -48,7 +49,14 @@ backend:
     add_user: Benutzer hinzufügen
     modify_user: Benutzer bearbeiten
   category:
+    category_list: Kategorieliste
     add_category: Kategorie hinzugefügt
+    edited_category: Kategorie bearbeitet
+    category: Kategorie
+    parent: Überg. Kategorie
+    edit: Bearbeiten
+    status: Status
+    delete: Löschen
   login:
     new_site: New to site?
     create_acount: Create Account

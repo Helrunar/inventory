@@ -2,15 +2,6 @@
 
 {% block contenpage %}
 	<div class="">
-		<div class="page-title">
-			<div class="title_left">
-				<h5>
-					{{ "backend.user.listing"|trans }}
-				</h5>
-			</div>
-		</div>
-
-		<div class="clearfix"></div>
 
 		<div class="row">
 			<div class="col-md-12">
@@ -20,7 +11,7 @@
 							{{ "backend.user.user_listing"|trans }}</h2>
 						<ul class="nav navbar-right panel_toolbox">
 							<li>
-								<a href="{{ path('app_admin_new_user') }}" class="btn btn-success">NEW</a>
+								<a href="{{ path('app_admin_new_user') }}" class="btn btn-success">{{ "backend.global.new"|trans }}</a>
 							</li>
 						</ul>
 						<div class="clearfix"></div>

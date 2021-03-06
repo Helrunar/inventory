@@ -12,6 +12,7 @@ backend:
     please_confirm: Please confirm your action?
     choice_action: Select an action
     no_item_selected: No items selected
+    new: New
   group:
     group_actions: Group action
     deactivate: Deactivate
@@ -48,8 +49,14 @@ backend:
     add_user: Added user
     modify_user: Modified user
   category:
+    category_list: List of Categories
     add_category: Add Category
     edited_category: Category edited
+    category: Category
+    parent: Parent Category
+    edit: Edit
+    status: Status
+    delete: Delete
   login:
     new_site: New to site?
     create_acount: Create Account

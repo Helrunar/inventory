@@ -2,21 +2,14 @@
 
 {% block contenpage %}
     <div class="">
-        <div class="page-title">
-            <div class="title_left">
-                <h5> Listing </h5>
-            </div>
-        </div>
-
-        <div class="clearfix"></div>
 
         <div class="row">
             <div class="col-md-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Liste des categories</h2>
+                        <h2>{{ "backend.category.category_list"|trans }}</h2>
                         <ul class="nav navbar-right panel_toolbox">
-                            <li><a href="{{ path('app_admin_new_categorie') }}" class="btn btn-success">NEW</a>
+                            <li><a href="{{ path('app_admin_new_categorie') }}" class="btn btn-success">{{ "backend.global.new"|trans }}</a>
                             </li>
                         </ul>
                         <div class="clearfix"></div>
@@ -26,23 +19,27 @@
                             <form action="{{ path('app_admin_groupaction_categorie') }}" id="grpaction" method="post" name="grpaction">
                                 <div class="form-group form-inline">
                                     <select class="form-control" name="action" required id="action_select">
-                                        <option value="">Action de groupe</option>
-                                        <option value="desactiver">Desactiver</option>
-                                        <option value="activer">Activer</option>
-                                        <option value="supprimer">Supprimer</option>
+                                        <option value="">
+                                            {{ "backend.group.group_actions"|trans }}</option>
+                                        <option value="{{"backend.group.deactivate"|trans }}">
+                                            {{ "backend.group.deactivate"|trans }}</option>
+                                        <option value="{{"backend.group.Activate"|trans }}">
+                                            {{ "backend.group.Activate"|trans }}</option>
+                                        <option value="{{"backend.group.delete"|trans }}">
+                                            {{ "backend.group.delete"|trans }}</option>
                                     </select>
-                                    <button class="btn btn-primary" type="submit">Go!!</button>
+                                    <button class="btn btn-primary" type="submit">{{ "backend.group.submit"|trans }}</button>
                                 </div>
 
                             </form>
                             <table id="example" class="display table table-striped table-bordered dataminetables" >
                                 <thead>
                                 <th><input type="checkbox" id="select_all" name="select_all"></th>
-                                <th>Libelle</th>
-                                <th>Cat. parente</th>
-                                <th>Modifier</th>
-                                <th>Etat ?</th>
-                                <th>Suprimer</th>
+                                <th>{{ "backend.category.category"|trans }}</th>
+                                <th>{{ "backend.category.parent"|trans }}</th>
+                                <th>{{ "backend.category.edit"|trans }}</th>
+                                <th>{{ "backend.category.status"|trans }}</th>
+                                <th>{{ "backend.category.delete"|trans }}</th>
                                 </thead>
                                 <tbody>
                                 {% for categorie in categories|filter(categorie => not categorie.deleted)  %}
