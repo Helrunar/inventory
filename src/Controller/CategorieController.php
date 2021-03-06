@@ -9,8 +9,10 @@ use App\Form\CategorieFormType;
 use App\Repository\CategorieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class CategorieController extends BaseController
 {
@@ -27,7 +29,7 @@ class CategorieController extends BaseController
 
     /**
      * @Route("/admin/categorie",name="app_admin_categories")
-     * @IsGranted("ROLE_WRITER")
+     * @IsGranted("ROLE_MANAGER")
      */
     public function users(){
         $categories = $this->categorieRepository->findAll();
@@ -36,9 +38,12 @@ class CategorieController extends BaseController
 
     /**
      * @Route("/admin/categorie/new",name="app_admin_new_categorie")
-     * @IsGranted("ROLE_WRITER")
+     * @IsGranted("ROLE_MANAGER")
+     * @param Request $request
+     * @param TranslatorInterface $translator
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function newCategorie(Request $request){
+    public function newCategorie(Request $request, TranslatorInterface $translator){
         $form = $this->createForm(CategorieFormType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
@@ -48,7 +53,7 @@ class CategorieController extends BaseController
                 ->setDeleted(false);
             $this->entityManager->persist($categorie);
             $this->entityManager->flush();
-            $this->addFlash("success","Categorie ajouté");
+            $this->addFlash("success", $translator->trans('backend.category.add_category'));
             return $this->redirectToRoute("app_admin_categories");
 
         }
@@ -57,9 +62,9 @@ class CategorieController extends BaseController
 
     /**
      * @Route("/admin/categorie/edit/{id}",name="app_admin_edit_categorie")
-     * @IsGranted("ROLE_WRITER")
+     * @IsGranted("ROLE_MANAGER")
      */
-    public function editCategorie(Categorie $categorie,Request $request){
+    public function editCategorie(Categorie $categorie,Request $request, TranslatorInterface $translator){
         $form = $this->createForm(CategorieFormType::class,$categorie);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
@@ -67,7 +72,7 @@ class CategorieController extends BaseController
                 ->setDeleted(false);
             $this->entityManager->persist($categorie);
             $this->entityManager->flush();
-            $this->addFlash("success","Categorie ajouté");
+            $this->addFlash("success", $translator->trans('backend.category.edited_category'));
             return $this->redirectToRoute("app_admin_categories");
         }
         return $this->render("admin/categorie/categorieform.html.twig",["categorieForm"=>$form->createView()]);
@@ -75,7 +80,7 @@ class CategorieController extends BaseController
 
     /**
      * @Route("/admin/categorie/changevalidite/{id}",name="app_admin_changevalidite_categorie",methods={"post"})
-     * @IsGranted("ROLE_WRITER")
+     * @IsGranted("ROLE_MANAGER")
      */
     public function activate(Categorie $categorie){
         $categorie = $this->categorieRepository->changeValidite($categorie);
@@ -84,7 +89,7 @@ class CategorieController extends BaseController
 
     /**
      * @Route("/admin/categorie/delete/{id}",name="app_admin_delete_categorie")
-     * @IsGranted("ROLE_EDITORIAL")
+     * @IsGranted("ROLE_MANAGER")
      */
     public function delete(Categorie $categorie){
         $categorie = $this->categorieRepository->delete($categorie);
@@ -93,23 +98,23 @@ class CategorieController extends BaseController
 
     /**
      * @Route("/admin/categorie/groupaction",name="app_admin_groupaction_categorie")
-     * @IsGranted("ROLE_WRITER")
+     * @IsGranted("ROLE_MANAGER")
      */
     public function groupAction(Request $request){
         $action = $request->get("action");
         $ids = $request->get("ids");
         $categories = $this->categorieRepository->findBy(["id"=>$ids]);
-        if ($action=="desactiver" && $this->isGranted("ROLE_EDITORIAL")){
+        if ($action=="deactivate" && $this->isGranted("ROLE_MANAGER")){
             foreach ($categories as $categorie) {
                 $categorie->setValid(false);
                 $this->entityManager->persist($categorie);
             }
-        }else if ($action=="activer" && $this->isGranted("ROLE_EDITORIAL")){
+        }else if ($action=="activate" && $this->isGranted("ROLE_MANAGER")){
             foreach ($categories as $categorie) {
                 $categorie->setValid(true);
                 $this->entityManager->persist($categorie);
             }
-        }else if ($action=="supprimer" && $this->isGranted("ROLE_EDITORIAL")){
+        }else if ($action=="delete" && $this->isGranted("ROLE_MANAGER")){
             foreach ($categories as $categorie) {
                 $categorie->setDeleted(true);
                 $this->entityManager->persist($categorie);

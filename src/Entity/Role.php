@@ -34,7 +34,7 @@ class Role
 
     public function getRoleName(): ?string
     {
-        return $this->roleName;
+        return $this->roleName; // ToDo We have to prevent the Superadmin Role, so Administrators cannot select this Role
     }
 
     public function setRoleName(string $roleName): self

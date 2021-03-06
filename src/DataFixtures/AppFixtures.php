@@ -28,8 +28,8 @@ class AppFixtures extends Fixture
     {
         $roles = [
             "ROLE_SUPERUSER" => "Super Admin",
-            "ROLE_MANAGER" => "Manager",
             "ROLE_ADMINISTRATOR" => "Admin",
+            "ROLE_MANAGER" => "Manager",
             "ROLE_USER" => "User"
         ];
 

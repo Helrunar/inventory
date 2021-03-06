@@ -12,6 +12,12 @@ backend:
     please_confirm: Please confirm your action?
     choice_action: Select an action
     no_item_selected: No items selected
+  group:
+    group_actions: Group action
+    deactivate: Deactivate
+    Activate: Activate
+    delete: Delete
+    submit: Submit
   menu:
     home: Home
     user: User
@@ -22,15 +28,12 @@ backend:
   user:
     listing: Listing
     user_listing: List of users
-    group_actions: Group action
-    deactivate: Deactivate
-    Activate: Activate
-    delete: Delete
     username: Username
     email: Email
     name: Full Name
     modifier: Edit
     status: Status
+    delete: Delete
     password: Password
     cancel: Cancel
     register: Register
@@ -44,6 +47,9 @@ backend:
     changed_password: Changed password
     add_user: Added user
     modify_user: Modified user
+  category:
+    add_category: Add Category
+    edited_category: Category edited
   login:
     new_site: New to site?
     create_acount: Create Account

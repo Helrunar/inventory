@@ -51,7 +51,7 @@ class UserController extends BaseController
 
     /**
      * @Route("/admin/user",name="app_admin_users")
-     * @IsGranted("ROLE_SUPERUSER")
+     * @IsGranted("ROLE_ADMINISTRATOR")
      */
     public function users()
     {
@@ -61,7 +61,7 @@ class UserController extends BaseController
 
     /**
      * @Route("/admin/user/new",name="app_admin_new_user")
-     * @IsGranted("ROLE_SUPERUSER")
+     * @IsGranted("ROLE_ADMINISTRATOR")
      */
     public function newUser(Request $request, TranslatorInterface $translator)
     {
@@ -88,7 +88,7 @@ class UserController extends BaseController
 
     /**
      * @Route("/admin/user/edit/{id}",name="app_admin_edit_user")
-     * @IsGranted("ROLE_SUPERUSER")
+     * @IsGranted("ROLE_ADMINISTRATOR")
      */
     public function editUser(User $user, Request $request, TranslatorInterface $translator)
     {
@@ -115,7 +115,7 @@ class UserController extends BaseController
 
     /**
      * @Route("/admin/user/changevalidite/{id}",name="app_admin_changevalidite_user",methods={"post"})
-     * @IsGranted("ROLE_SUPERUSER")
+     * @IsGranted("ROLE_ADMINISTRATOR")
      */
     public function activate(User $user)
     {
@@ -125,7 +125,7 @@ class UserController extends BaseController
 
     /**
      * @Route("/admin/user/delete/{id}",name="app_admin_delete_user")
-     * @IsGranted("ROLE_SUPERUSER")
+     * @IsGranted("ROLE_ADMINISTRATOR")
      */
     public function delete(User $user)
     {
@@ -137,7 +137,7 @@ class UserController extends BaseController
 
     /**
      * @Route("/admin/user/changePassword",name="app_admin_changepswd")
-     * @IsGranted("ROLE_SUPERUSER")
+     * @IsGranted("ROLE_ADMINISTRATOR")
      */
     public function changePswd(Request $request, TranslatorInterface $translator)
     {
@@ -166,7 +166,7 @@ class UserController extends BaseController
 
     /**
      * @Route("/admin/user/groupaction",name="app_admin_groupaction_user")
-     * @IsGranted("ROLE_SUPERUSER")
+     * @IsGranted("ROLE_ADMINISTRATOR")
      */
     public function groupAction(Request $request, TranslatorInterface $translator)
     {
