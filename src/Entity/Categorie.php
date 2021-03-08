@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CategorieRepository::class)
- * @UniqueEntity(fields={"libelle"})
+ * @UniqueEntity(fields={"category"})
  */
 class Categorie
 {
@@ -26,15 +26,15 @@ class Categorie
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
      */
-    private $libelle;
+    private $category;
 
     /**
      * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="categories")
      */
-    private $CategorieParente;
+    private $ParentCategory;
 
     /**
-     * @ORM\OneToMany(targetEntity=Categorie::class, mappedBy="CategorieParente")
+     * @ORM\OneToMany(targetEntity=Categorie::class, mappedBy="ParentCategory")
      */
     private $categories;
 
@@ -58,26 +58,26 @@ class Categorie
         return $this->id;
     }
 
-    public function getLibelle(): ?string
+    public function getCategory(): ?string
     {
-        return $this->libelle;
+        return $this->category;
     }
 
-    public function setLibelle(string $libelle): self
+    public function setCategory(string $category): self
     {
-        $this->libelle = $libelle;
+        $this->libelle = $category;
 
         return $this;
     }
 
-    public function getCategorieParente(): ?self
+    public function getParentCategory(): ?self
     {
-        return $this->CategorieParente;
+        return $this->ParentCategory;
     }
 
-    public function setCategorieParente(?self $CategorieParente): self
+    public function setParentCategory(?self $ParentCategory): self
     {
-        $this->CategorieParente = $CategorieParente;
+        $this->ParentCategory = $ParentCategory;
 
         return $this;
     }
@@ -94,7 +94,7 @@ class Categorie
     {
         if (!$this->categories->contains($category)) {
             $this->categories[] = $category;
-            $category->setCategorieParente($this);
+            $category->setParentCategory($this);
         }
 
         return $this;
@@ -105,8 +105,8 @@ class Categorie
         if ($this->categories->contains($category)) {
             $this->categories->removeElement($category);
             // set the owning side to null (unless already changed)
-            if ($category->getCategorieParente() === $this) {
-                $category->setCategorieParente(null);
+            if ($category->getParentCategory() === $this) {
+                $category->setParentCategory(null);
             }
         }
 
@@ -139,6 +139,6 @@ class Categorie
 
     public function __toString()
     {
-        return $this->libelle;
+        return $this->category;
     }
 }
