@@ -37,7 +37,6 @@ class AppFixtures extends Fixture
             if (!$manager->getRepository(Role::class)->findByRoleName([$key])) {
                 $role = new Role();
                 $role->setRoleName($key);
-                $role->setLibelle($value);
                 $manager->persist($role);
                 $manager->flush();
             }

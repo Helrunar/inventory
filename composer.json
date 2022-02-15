@@ -4,7 +4,7 @@
     "require": {
         "php": "^7.4|^8.0",
         "ext-ctype": "*",
-        "ext-gd": "^7.4|^8.0",
+        "ext-gd": "*",
         "ext-iconv": "*",
         "composer/package-versions-deprecated": "1.11.99.5",
         "doctrine/doctrine-bundle": "^2",

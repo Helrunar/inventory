@@ -19,12 +19,12 @@ class CategorieFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libelle')
-            ->add('CategorieParente',EntityType::class,[
+            ->add('CategoryName')
+            ->add('ParentCategory',EntityType::class,[
                 "class"=>Categorie::class,
                 "query_builder"=>function(CategorieRepository $categorieRepository){
                     return $categorieRepository->createQueryBuilder('c')
-                        ->orderBy('c.libelle', 'ASC')
+                        ->orderBy('c.category', 'ASC')
                         ->andWhere("c.deleted = false");
                 },
                 "required"=>false

@@ -22,11 +22,6 @@ class Role
      */
     private $roleName;
 
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $libelle;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -42,23 +37,6 @@ class Role
         $this->roleName = $roleName;
 
         return $this;
-    }
-
-    public function getLibelle(): ?string
-    {
-        return $this->libelle;
-    }
-
-    public function setLibelle(string $libelle): self
-    {
-        $this->libelle = $libelle;
-
-        return $this;
-    }
-
-    public function __toString()
-    {
-        return $this->libelle;
     }
 
 
